@@ -1,0 +1,8 @@
+@InProceedings{Liu_2023_CVPR,
+    author    = {Liu, Xubo and Lakomkin, Egor and Vougioukas, Konstantinos and Ma, Pingchuan and Chen, Honglie and Xie, Ruiming and Doulaty, Morrie and Moritz, Niko and Kolar, Jachym and Petridis, Stavros and Pantic, Maja and Fuegen, Christian},
+    title     = {SynthVSR: Scaling Up Visual Speech Recognition With Synthetic Supervision},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {18806-18815}
+}

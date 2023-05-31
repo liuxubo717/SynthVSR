@@ -1,1239 +1,309 @@
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">google.load("jquery", "1.3.2");</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Titillium Web' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
 <style type="text/css">
-   /*span {*/
-   /*   background-image:url(./resources/LASS.png);*/
-   /*   background-repeat: no-repeat;*/
-   /*   background-size: 100%, 100%;*/
-   /*   background-attachment: fixed;*/
-   .exp-title {
-    display: block;
-    width: 100%;
-    overflow: hidden;
-    margin: 0px 0 25px;
-    text-align: center;
-    font-weight: 300;
-    text-transform: uppercase;
-    font-size: 36px;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-}
-   /*}*/
-   p {
-   line-height:30px;
-   text-align: justify;
-   }
-   body {
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-   font-weight:300;
-   font-size:18px;
-   margin-left: auto;
-   margin-right: auto;
-   width: 1500px;
-   }
-   h1 {
-   font-size:32px;
-   font-weight:300;
-   }
-   .disclaimerbox {
-   background-color: #eee;
-   border: 1px solid #eeeeee;
-   border-radius: 10px ;
-   -moz-border-radius: 10px ;
-   -webkit-border-radius: 10px ;
-   padding: 20px;
-   }
-   video.header-vid {
-   height: 140px;
-   border: 1px solid black;
-   border-radius: 10px ;
-   -moz-border-radius: 10px ;
-   -webkit-border-radius: 10px ;
-   }
-   audio {
-   width: 280px;
-   }
-   table {
-   display: table;
-   border-collapse: separate;
-   border-spacing:20px 10px;
-   }
-   img.header-img {
-   height: 120px;
-   border: 1px solid black;
-   border-radius: 10px ;
-   -moz-border-radius: 10px ;
-   -webkit-border-radius: 10px ;
-   }
-   img.rounded {
-   border: 1px solid #eeeeee;
-   border-radius: 10px ;
-   -moz-border-radius: 10px ;
-   -webkit-border-radius: 10px ;
-   }
-   a:link,a:visited
-   {
-   color: #1367a7;
-   text-decoration: none;
-   }
-   a:hover {
-   color: #208799;
-   }
-   td.dl-link {
-   height: 160px;
-   text-align: center;
-   /*text-align: justify;*/
-   /*justify-content: space-around;*/
-   font-size: 22px;
-   }
-   .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-   box-shadow:
-   0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
-   5px 5px 0 0px #fff, /* The second layer */
-   5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
-   10px 10px 0 0px #fff, /* The third layer */
-   10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
-   15px 15px 0 0px #fff, /* The fourth layer */
-   15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
-   20px 20px 0 0px #fff, /* The fifth layer */
-   20px 20px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
-   /*25px 25px 0 0px #fff, !* The fifth layer *!*/
-   /*25px 25px 1px 1px rgba(0,0,0,0.35); !* The fifth layer shadow *!*/
-   margin-left: 10px;
-   margin-right: 45px;
-   }
-   .paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-   box-shadow:
-   0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
-   margin-left: 10px;
-   margin-right: 45px;
-   }
-   .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-   box-shadow:
-   0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
-   5px 5px 0 0px #fff, /* The second layer */
-   5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
-   10px 10px 0 0px #fff, /* The third layer */
-   10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
-   margin-top: 5px;
-   margin-left: 10px;
-   margin-right: 30px;
-   margin-bottom: 5px;
-   }
-   .vert-cent {
-   position: relative;
-   top: 50%;
-   transform: translateY(-50%);
-   }
-   hr
-   {
-   border: 0;
-   height: 1px;
-   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-   }
+    body {
+        font-family: "Computer Modern Sans", "Titillium Web", sans-serif;
+        font-weight:300;
+        font-size:18px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1100px;
+    }
+
+    h1 {
+        font-family: "Computer Modern Sans", "Titillium Web", sans-serif;
+        font-size:32px;
+        font-weight:300;
+    }
+
+    .disclaimerbox {
+        background-color: #eee;
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+        padding: 20px;
+    }
+
+    video.header-vid {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+    img {
+        max-width: 100%;
+        max-height: auto;
+    }
+    /*img.header-img {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.rounded {
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }*/
+
+    a:link,a:visited
+    {
+        color: #1367a7;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #208799;
+    }
+
+    td.dl-link {
+        height: 160px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+                15px 15px 0 0px #fff, /* The fourth layer */
+                15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+                20px 20px 0 0px #fff, /* The fifth layer */
+                20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+                25px 25px 0 0px #fff, /* The fifth layer */
+                25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+    .paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+
+    .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 5px;
+    }
+
+    .vert-cent {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    hr
+    {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
 </style>
+
 <html>
-   <head>
-      <title>Separate What You Describe: Language-Queried Audio Source Separation</title>
-      <meta property="og:image" content="Path to my teaser.png"/>
-      <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
-      <meta property="og:title" content="Creative and Descriptive Paper Title." />
-      <meta property="og:description" content="Paper description." />
-      <!-- Get from Google Analytics -->
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src=""></script>
-      <script>
-         window.dataLayer = window.dataLayer || [];
-         function gtag(){dataLayer.push(arguments);}
-         gtag('js', new Date());
 
-         gtag('config', 'UA-75863369-6');
-      </script>
-   </head>
-   <body>
-      <br><br>
-      <center>
-         <span style="font-size:33px"><b>Separate What You Describe: Language-Queried Audio Source Separation</b></span>
-         <br>
-         <br>
-         <table align=center width=800px>
-            <table align=center width=1000px>
-               <tr>
-                  <td align=center width=120px>
-                     <center>
-                        <span style="font-size:22px"><a href="https://liuxubo717.github.io/">Xubo Liu<sup>1</sup></a></span>
-                     </center>
-                  </td>
-                  <td align=center width=120px>
-                     <center>
-                        <span style="font-size:22px"><a href="https://www.surrey.ac.uk/people/haohe-liu">Haohe Liu<sup>1</sup></a></span>
-                     </center>
-                  </td>
-                  <td align=center width=120px>
-                     <center>
-                        <span style="font-size:22px"><a href="https://scholar.google.com/citations?user=B6O3SycAAAAJ&hl=zh-CN">Qiuqiang Kong<sup>2</sup></a></span>
-                     </center>
-                  </td>
-                  <td align=center width=120px>
-                     <center>
-                        <span style="font-size:22px"><a href="https://www.surrey.ac.uk/people/xinhao-mei">Xinhao Mei<sup>1</sup></a></span>
-                     </center>
-                  </td>
-                  <!--					<td align=center width=120px>-->
-                  <!--						<center>-->
-                  <!--							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Jinzheng Zhao</a></span>-->
-                  <!--						</center>-->
-                  <!--					</td>-->
-               </tr>
-            </table>
-            <table align=center width=1000px>
-               <tr>
-                  <td align=center width=120px>
-                     <center>
-                        <span style="font-size:22px"><a href='https://www.surrey.ac.uk/people/jinzheng-zhao'>Jinzheng Zhao<sup>1</sup></a></span>
-                     </center>
-                  </td>
-                  <td align=center width=120px>
-                     <center>
-                        <span style="font-size:22px"><a href='https://www.surrey.ac.uk/people/qiushi-huang'>Qiushi Huang<sup>1</sup></a></span>
-                     </center>
-                  </td>
-                  <td align=center width=120px>
-                     <center>
-                        <span style="font-size:22px"><a href='https://www.surrey.ac.uk/people/mark-plumbley'>Mark D. Plumbley<sup>1</sup></a></span><br>
-                     </center>
-                  </td>
-                  <td align=center width=120px>
-                     <center>
-                        <span style="font-size:22px"><a href='http://personal.ee.surrey.ac.uk/Personal/W.Wang/'>Wenwu Wang<sup>1</sup></a></span><br>
-                     </center>
-                  </td>
-               </tr>
-            </table>
-         </table>
-      </center>
-      <br>
-      <table align=center width=900px>
-         <tr>
-            <td align=center width=120px>
-               <center>
-                  <sup>1</sup><i>University of Surrey, UK</i>
-               </center>
-            </td>
-            <td align=center width=220px>
-               </center>
-               <sup>2</sup><i>ByteDance, China</i>
-               </center>
-            </td>
-         </tr>
-      </table>
-      <br>
-      <hr>
-      <table align=center width=1000px>
-         <center>
-            <h1>Abstract</h1>
-         </center>
-         <tr>
-            <td>
-               <p>
-                  In this paper, we introduce the task of language-queried audio source separation (LASS), which aims to separate a target source from an audio mixture based on a natural language query of the target source (e.g., ''<i>a man tells a joke followed by people laughing</i>'').
-                  A unique challenge in LASS is associated with the complexity of natural language description and its relation with the audio sources.
-                  To address this issue, we proposed LASS-Net, an end-to-end neural network that is learned to jointly process acoustic and linguistic information, and separate the target source that is consistent with the language query from an audio mixture.
-                  We evaluate the performance of our proposed system with a dataset created from the <a href="https://audiocaps.github.io/">AudioCaps</a> dataset. Experimental results show that LASS-Net achieves considerable improvements over baseline methods.
-                  Furthermore, we observe that LASS-Net achieves promising generalization results when using diverse human-annotated descriptions as queries, indicating its potential use in real-world scenarios.
-               </p>
-            </td>
-         </tr>
-      </table>
-      <br>
-      <hr>
+<head>
+    <title>SynthVSR: Scaling Visual Speech Recognition With Synthetic Supervision</title>
+</head>
 
-      <table align=center width=1000px>
-         <center>
-            <h1>Oral Presentation at INTERSPEECH</h1>
-         </center>
-         <tr>
+<body>
+<br>
+<div style="text-align: center;">
+    <span style="font-size:55px">SynthVSR: Scaling Up Visual Speech Recognition With Synthetic Supervision<br></span>
+    <br>
+    <table align=center width=900px>
+        <tr>
+            <td align=center>
+						  <span style="font-size:30px">
+							  <a href="https://liuxubo717.github.io/">Xubo Liu</a><sup>1,2</sup>,
+                              <a href="https://www.linkedin.com/in/egor-lakomkin-1032b337/">Egor Lakomkin</a><sup>2</sup>,
+                              <a href="https://www.linkedin.com/in/konstantinos-vougioukas-53988548/">Konstantinos Vougioukas</a><sup>2</sup>,
+                              <a href="https://mpc001.github.io/">Pingchuan Ma</a><sup>2</sup>,
+                              <a href="https://www.robots.ox.ac.uk/~hchen/">Honglie Chen</a><sup>2</sup>,
+                              <a href="https://www.linkedin.com/in/ruiming-xie-176aa049/">Ruiming Xie</a><sup>2</sup>,
+                              <a href="https://www.linkedin.com/in/mortaza-morrie-doulaty-44824021/">Morrie Doulaty</a><sup>2</sup>,
+                              <a href="https://www.linkedin.com/in/niko-moritz-6005a7148/">Niko Moritz</a><sup>2</sup>,
+                              <a href="https://www.linkedin.com/in/jachymkolar/">Jáchym Kolář</a><sup>2</sup>,
+                              <a href="https://www.linkedin.com/in/stavros-petridis-4609a93/">Stavros Petridis</a><sup>2</sup>,
+                              <a href="https://ibug.doc.ic.ac.uk/maja/">Maja Pantic</a><sup>2</sup>, 
+                              <a href="https://ai.facebook.com/people/christian-fuegen">Christian Fuegen</a><sup>2</sup>,
+						  </span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+						  <span style="font-size:26px">
+							  <sup>1</sup>University of Surrey, <sup>2</sup>Meta AI
+						  </span>
+                <br>
+                <span style="font-size:25px">
+                    Accepted at <a href="http://cvpr2023.thecvf.com/">CVPR 2023</a> 
+               </span>
+                <br>
+            </td>
+        </tr>
+    </table>
+
+    <table align=center width=300px>
+        <tr>
+<!--            <td align=center width=140px>-->
+<!--                <div style="text-align: center;">-->
+<!--                    <span style="font-size:22px"><a href='https://github.com/facebookresearch/sound-spaces' target="_blank"> [Code & Data]</a></span>-->
+<!--                </div>-->
+<!--            </td>-->
+            <td align=center width=100px>
+                <div style="text-align: center;">
+                    <span style="font-size:26px"><a href='https://arxiv.org/abs/2303.17200' target="_blank"> [Paper]</a></span>
+                    <span style="font-size:26px"><a href='bibtex.txt' target="_blank"> [Bibtex]</a></span>
+<!--                    <span style="font-size:26px"><a href='https://github.com/facebookresearch/sound-spaces/tree/master/ss_baselines/savi' target="_blank"> [Code]</a></span>-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+    </table>
+</div>
+
+
+<table align=center width=900px>
+    <tr>
+        <td>
+            <br>
+            <div style="text-align: center;">
+                <img class="round" width="900px" src="synthvsr.png"/>
+            </div>
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size:15pt; text-align:justify">
+            Recently reported state-of-the-art results in visual speech recognition (VSR) often rely on increasingly large amounts of video data, 
+            while the publicly available transcribed video datasets are limited in size. In this paper, for the first time, we study the potential 
+            of leveraging synthetic visual data for VSR. Our method, termed SynthVSR, substantially improves the performance of VSR systems with 
+            synthetic lip movements. The key idea behind SynthVSR is to leverage a speech-driven lip animation model that generates lip movements 
+            conditioned on the input speech. The speech-driven lip animation model is trained on an unlabeled audio-visual dataset and could be further 
+            optimized towards a pre-trained VSR model when labeled videos are available. As plenty of transcribed acoustic data and face images are available, 
+            we are able to generate large-scale synthetic data using the proposed lip animation model for semi-supervised VSR training. 
+            We evaluate the performance of our approach on the largest public VSR benchmark - Lip Reading Sentences 3 (LRS3). 
+            SynthVSR achieves a WER of 43.3% with only 30 hours of real labeled data, outperforming off-the-shelf approaches using thousands of hours of video. 
+            The WER is further reduced to 27.9% when using all 438 hours of labeled data from LRS3, which is on par with the state-of-the-art self-supervised AV-HuBERT [1] method. 
+            Furthermore, when combined with large-scale pseudo-labeled audio-visual data SynthVSR yields a new state-of-the-art VSR WER of 16.9% using publicly available data only, 
+            surpassing the recent state-of-the-art approaches [2, 3] trained with 29 times more non-public machine-transcribed video data (90,000 hours). 
+            Finally, we perform extensive ablation studies to understand the effect of each component in our proposed method.
+        </td>
+    </tr>
+</table>
+
+<br>
+
+
+<section>
+    <header style="text-align: center;font-size: 30pt">Presentation at CVPR</header>
+    <hr>
+    <table align=center width=900px>
+        <tr>
+            <td style="font-size:15pt; text-align:justify">
+                <div style="text-align: center;">
+                    8-min presentation at CVPR 2023.
+                </div>
+            </td>
+        </tr>
+        <tr>
             <td>
                 <div style="text-align: center;">
-                    <iframe width="853" height="480" src="https://www.youtube.com/embed/vsEWPVEZ6gA" frameborder="0"
+                    <iframe width="853" height="480" src="" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </td>
         </tr>
-      </table>
-      <br>
-      <hr>
+    </table>
+</section>
 
-      <table align=center width=1000px>
-         <center>
-            <h1>Language-Queried Audio Source Separation</h1>
-         </center>
-         <tr>
+<br>
+
+<section>
+    <header style="text-align: center;font-size: 30pt">Supplementary Video</header>
+    <hr>
+    <table align=center width=900px>
+        <tr>
+            <td style="font-size:15pt; text-align:justify">
+                <div style="text-align: center;">
+                    Synthetic lip movement videos generated from Librispeech and CelebA.
+                </div>
+            </td>
+        </tr>
+        <tr>
             <td>
-               <p>In this work, we present LASS-Net, which is learned to jointly process acoustic and linguistic information, and separate the target source described by the natural language expressions.
-                  In LASS-Net, a Transformer-based query network (QueryNet) is used to encode the language expression into a query embedding, and a ResUNet-based separation network (SeparationNet) is then used to separate the target source from mixture conditioned on the query embedding.
-                  The architecture of our proposed model is illustrated as follows.
-               </p>
+                <div style="text-align: center;">
+                    <iframe width="853" height="480" src="https://www.youtube.com/embed/idIYKCzEFMU" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </td>
-         </tr>
-         <tr>
-            <td><img style="width:1000px" src="./resources/LASS.png"/></td>
-         </tr>
-      </table>
-      <br>
-      <hr>
+        </tr>
+    </table>
+</section>
 
+<br>
 
-
-
-
-      <center>
-         <h1>Audio Separation Results</h1>
-      </center>
-      <!--      for wav and img demonstration-->
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               We demonstrate the audio samples separated by our proposed LASS-Net. There are four audio clips for each example:<br><br>
-               (a) audio mixture<br><br>
-               (b) separated audio source queried by AudioCaps description <br><br>
-               (c) separated audio sources queried by our collected human description <br><br>
-               (d) ground truth target source.
-               <br><br><br><br>
+<section>
+    <header style="text-align: center;font-size: 30pt">References</header>
+    <hr>
+    <table align=center width=900px>
+        <tr>
+            <td style="font-size:15pt; text-align:justify">
+            <span>
+                [1] Bowen Shi, Wei-Ning Hsu, Kushal Lakhotia, and Abdelrahman Mohamed.
+                <b>Learning audio-visual speech representation by masked multimodal cluster prediction</b>.
+                In <i>ICLR</i> 2022 
+            </span>
             </td>
-         </tr>
-
-
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>A person shouts nearby and then emergency vehicle sirens sounds</i>''<br><br>
-               Language Query (human): ''<i>A man is speaking with ambulance and police siren sound in the background</i>''
+        </tr>
+        <tr>
+            <td style="font-size:15pt; text-align:justify">
+            <span>
+                [2] Dmitriy Serdyuk, Otavio Braga, and Olivier Siohan.
+                <b>Transformer-based video front-ends for audio-visual speech
+                    recognition</b>.
+                In <i>INTERSPEECH</i> 2022 
+            </span>
             </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp1/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp1/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp1/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp1/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp1/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp1/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp1/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp1/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>A motor vibrates and then revs up and down</i>''<br><br>
-               Language Query (human): ''<i>The engine sound of a vehicle</i>''
+        </tr>
+        <tr>
+            <td style="font-size:15pt; text-align:justify">
+            <span>
+                [3] Dmitriy Serdyuk, Olivier Siohan, and Otavio de Pinho ForinBraga.
+                <b>Audio-visual speech recognition is worth 32x32x8 voxels</b>.
+                In <i>ASRU</i> 2021 
+            </span>
             </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp2/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp2/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp2/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp2/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp2/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp2/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp2/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp2/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>People laugh followed by people singing while music plays</i>''<br><br>
-               Language Query (human): ''<i>A music show is presenting to the public</i>''
-            </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp3/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp3/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp3/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp3/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp3/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp3/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp3/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp3/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>Someone is typing on a keyboard</i>''<br><br>
-               Language Query (human): ''<i>The sound of hitting the keyboard</i>''
-            </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp4/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp4/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp4/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp4/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp4/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp4/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp4/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp4/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>Distant claps of thunder with rain falling and a man speaking</i>''<br><br>
-               Language Query (human): ''<i>Very rainy and a man is talking dirty words in the background</i>''
-            </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp5/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp5/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp5/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp5/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp5/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp5/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp5/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp5/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>Heavy wind and birds chirping</i>''<br><br>
-               Language Query (human): ''<i>A bird is chirping under the thunder storm</i>''
-            </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp6/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp6/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp6/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp6/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp6/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp6/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp6/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp6/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>Applauding followed by people singing and a tambourine</i>''<br><br>
-               Language Query (human): ''<i>A show start with audience applauding and then singing</i>''
-            </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp7/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp7/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp7/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp7/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp7/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp7/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp7/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp7/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>A woman is giving a speech</i>''<br><br>
-               Language Query (human): ''<i>A female is speaking with clearing throat sounds</i>''
-            </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp8/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp8/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp8/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp8/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp8/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp8/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp8/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp8/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>Church bells ringing</i>''<br><br>
-               Language Query (human): ''<i>Someone is striking a large church bell</i>''
-            </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp9/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp9/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp9/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp9/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp9/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp9/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp9/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp9/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
-
-      <table align=center width=1200px>
-         <tr>
-            <td align=left width=1200px>
-               Language Query (AudioCaps): ''<i>An adult male is laughing</i>''<br><br>
-               Language Query (human): ''<i>A man is laughing really hard</i>''
-            </td>
-         </tr>
-         <tr>
-            <table align=center width=1200px>
-               <tr>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp10/mix.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp10/lass.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp10/human.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <audio controls="">
-                           <source src="./demo/exp10/tgt.wav" type="audio/wav"/>
-                        </audio>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp10/mix.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp10/lass.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp10/human.png" width="280"/>
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        <img alt="fname" height="125" src="./demo/exp10/tgt.png" width="280"/>
-                     </center>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                     <center>
-                        (a) audio mixture
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (b) LASS (AudioCaps)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (c) LASS (human)
-                     </center>
-                  </td>
-                  <td>
-                     <center>
-                        (d) target source
-                     </center>
-                  </td>
-               </tr>
-               </tr>
-            </table>
-         </tr>
-      </table>
-      <br>
+        </tr>
+    </table>
+</section>
+<br>
 
 
-      <br>
-      <hr>
-      <table align=center width=1000px>
-         <center>
-            <h1>Paper</h1>
-         </center>
-         <tr>
-            <td><a href=""><img class="layered-paper-big" style="height:175px" src="./resources/paper.png"/></a></td>
-            <td>
-               <span style="font-size:14pt">X. Liu, H. Liu, Q. Kong, X. Mei, J. Zhao, Q. Huang, M.D. Plumbley, W. Wang<br>
-               <br>
-               <b>Separate What You Describe: Language-Queried Audio Source Separation</b><br>
-               <br>
-               Accepted at INTERSPEECH 2022<br>
-               <br>
-               <br>
-               <a href="./resources/bibtex.txt">[Bibtex]</a>&nbsp&nbsp&nbsp<a href="https://arxiv.org/abs/2203.15147">[ArXiv]</a>&nbsp&nbsp&nbsp<a href="https://github.com/liuxubo717/LASS">[Code]</a>
-               <!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
-            </td>
-         </tr>
-      </table>
-      <br>
-      <br>
-      <hr>
-      <br>
-      <table align=center width=900px>
-         <tr>
-            <td width=400px>
-               <left>
-                  <center>
-                     <h1>Acknowledgements</h1>
-                  </center>
-                  <p>
-                     This research was supported by a Newton Institutional Links Award from the British Council (Grant number 623805725), a Research Scholarship from the China Scholarship Council (CSC), and a PhD Studentship from the University of Surrey.
-                  </p>
-               </left>
-            </td>
-         </tr>
-      </table>
-      <br>
-   </body>
+
+</body>
 </html>
-</table>
